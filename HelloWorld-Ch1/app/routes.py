@@ -5,4 +5,15 @@ from app import app #import app from __init__.py
 @app.route('/index')
 #So now whenever a web browser requests either of the URLs above Flask invokes this function and returns the value as a response.
 def index():
-    return "Hello World!" #Returns a greeting as a string
+    user = {'username': 'Marcus'} #dictionary of user names
+    return '''
+
+#Now complete the webpage with some HTML
+<HTML>
+    <head>
+        <title> Home Page - Microblog</title>
+    </head>
+    <body>
+        <h1> Hello, ''' + user['username'] + '''!</h1>
+    </body>
+</html>'''
