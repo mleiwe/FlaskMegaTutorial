@@ -1,3 +1,4 @@
+from flask import render_template
 from app import app #import app from __init__.py
 
 #Decorator - something that modifies the function following it.  Used to register functions as callbacks for certain events.
@@ -6,14 +7,18 @@ from app import app #import app from __init__.py
 #So now whenever a web browser requests either of the URLs above Flask invokes this function and returns the value as a response.
 def index():
     user = {'username': 'Marcus'} #dictionary of user names
-    return '''
-
-#Now complete the webpage with some HTML
-<HTML>
-    <head>
-        <title> Home Page - Microblog</title>
-    </head>
-    <body>
-        <h1> Hello, ''' + user['username'] + '''!</h1>
-    </body>
-</html>'''
+    posts =[
+        {
+            'author': {'username':'Marcus'},
+            'body': 'Advanced snuggles are my favourite'
+        },
+        {
+            'author': {'username':'Caryn'},
+            'body': 'My husband is the best husband ever'
+        },
+        {
+            'author': {'username':'Marcus'},
+            'body': 'I can make this say anything MUHAHAHAHAHA'
+        },
+    ]
+    return render_template('index.html', title='Home', user=user, posts=posts)
